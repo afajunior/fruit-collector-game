@@ -220,34 +220,13 @@ go test -v ./...
 
 ---
 
-## 🤝 Contribuindo
+## 📝 Notas de Desenvolvimento
 
-Contribuições são bem-vindas! Para contribuir:
-
-1. Fork o projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/MinhaFeature`)
-3. Commit suas mudanças (`git commit -m 'Adiciona MinhaFeature'`)
-4. Push para a branch (`git push origin feature/MinhaFeature`)
-5. Abra um Pull Request
-
-### Diretrizes
-- Mantenha a arquitetura ECS
-- Components devem ser dados puros (sem métodos)
-- Systems devem ter responsabilidade única
-- Código comentado em inglês ou português
-- Siga o estilo de código Go (use `gofmt`)
-
----
-
-## 📝 Licença
-
-Este projeto é distribuído sob a licença MIT. Veja `LICENSE` para mais informações.
-
----
-
-## 👨‍💻 Autor
-
-Desenvolvido como projeto de aprendizado de ECS e desenvolvimento de jogos em Go.
+### Boas Práticas ECS
+- Components são dados puros (sem métodos)
+- Systems têm responsabilidade única
+- World gerencia lifecycle das entidades
+- Queries por components para filtrar entidades
 
 ---
 
@@ -269,18 +248,11 @@ Este projeto foi criado para praticar:
 
 ---
 
-## 🐛 Issues Conhecidos
-
-Nenhum no momento. Reporte bugs na aba [Issues](https://github.com/seu-usuario/fruit-collector/issues).
-
----
-
-## ⭐ Agradecimentos
-
-- [Ebiten](https://ebiten.org/) - Engine incrível para jogos 2D em Go
-- [LDtk](https://ldtk.io/) - Editor de níveis moderno
-- Comunidade Go pela excelente documentação
+### Exemplos:
+- **Desafio:** Como fazer colisão eficiente em grid?
+- **Solução:** Usar `GetEntitiesAt(x, y)` para query espacial
+- **Aprendizado:** ECS facilita adicionar novos tipos de entidades sem modificar systems existentes
 
 ---
 
-**Divirta-se codificando e coletando frutas! 🍎🍌🍓**
+**Bom aprendizado! 🍎🍌🍓**
