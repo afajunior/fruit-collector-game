@@ -248,11 +248,4 @@ Este projeto foi criado para praticar:
 
 ---
 
-### Exemplos:
-- **Desafio:** Como fazer colisão eficiente em grid?
-- **Solução:** Usar `GetEntitiesAt(x, y)` para query espacial
-- **Aprendizado:** ECS facilita adicionar novos tipos de entidades sem modificar systems existentes
-
----
-
 **Bom aprendizado! 🍎🍌🍓**
