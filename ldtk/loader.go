@@ -1,6 +1,7 @@
 package ldtk
 
 import (
+	"encoding/json"
 	"errors"
 	"image/color"
 
@@ -14,9 +15,9 @@ type Entity struct {
 }
 
 type EntityFields struct {
-	Identifier string `json:"__identifier"`
-	Type       string `json:"__type"`
-	Value      any    `json:"__value"`
+	Identifier string          `json:"__identifier"`
+	Type       string          `json:"__type"`
+	Value      json.RawMessage `json:"__value"`
 }
 
 type Layer struct {
@@ -36,7 +37,7 @@ type Level struct {
 	ScreenHeight int     `json:"pxHei"`
 }
 
-type Ltdk struct {
+type Project struct {
 	Levels []Level `json:"levels"`
 }
 
@@ -51,7 +52,7 @@ func (e *Entity) GetPosition(gridSize int) ([2]int, error) {
 }
 
 func (l *Layer) SpawnCollisions(w *ecs.World) {
-	if l.Type == "Collisions" {
+	if l.Identifier != "Collisions" {
 		return
 	}
 	for i, v := range l.GridCsv {
@@ -66,17 +67,16 @@ func (l *Layer) SpawnCollisions(w *ecs.World) {
 }
 
 func (l *Layer) SpawnEntities(w *ecs.World) error {
-	if l.Type == "entities" {
+	if l.Identifier != "Entities" {
 		return nil
 	}
 	for _, ent := range l.Entities {
-		position, error := ent.GetPosition(l.GridSize)
-		if error != nil {
-			return error
+		position, err := ent.GetPosition(l.GridSize)
+		if err != nil {
+			return err
 		}
 
 		e := w.NewEntity()
-		w.Positions.Add(e, ecs.Position{X: position[0], Y: position[1]})
 
 		switch ent.Identifier {
 		case "Player":
@@ -84,20 +84,39 @@ func (l *Layer) SpawnEntities(w *ecs.World) error {
 			w.Velocities.Add(e, ecs.Velocity{})
 			w.Sprites.Add(e, ecs.Sprite{Color: color.RGBA{0x3B, 0x82, 0xF6, 0xFF}})
 		case "Fruit":
-			points := 0
-			for _, field := range ent.Fields {
-				switch field.Identifier {
-				case "Type":
-				case "Points":
-					/*points, error =
-					if error != nil {
-						return nil
-					}*/
-				}
+			points, err := GetField[int](&ent, "Points")
+
+			if err != nil {
+				return err
 			}
-			w.Collectables.Add(e, ecs.Collectable{Points: points, Enabled: true})
+			if points < 1 {
+				return errors.New("Invalid fruit point")
+			}
+
+			fruitType, err := GetField[string](&ent, "Type")
+			if err != nil {
+				return err
+			}
+
+			w.Collectables.Add(e, ecs.Collectable{Points: points, Type: fruitType, Enabled: true})
 			w.Sprites.Add(e, ecs.Sprite{Color: color.RGBA{0xEF, 0x44, 0x44, 0xFF}})
 		}
+		w.Positions.Add(e, ecs.Position{X: position[0], Y: position[1]})
 	}
 	return nil
+}
+
+func GetField[T any](e *Entity, name string) (T, error) {
+	var zero T
+	for _, f := range e.Fields {
+		if f.Identifier == name {
+			var v T
+			err := json.Unmarshal(f.Value, &v)
+			if err != nil {
+				return zero, err
+			}
+			return v, err
+		}
+	}
+	return zero, errors.New("Field not found")
 }

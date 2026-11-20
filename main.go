@@ -26,7 +26,7 @@ type Game struct {
 	world        *ecs.World
 	systems      []ecs.System
 	renderer     systems.RenderSystem
-	ldtk         *ldtk.Ltdk
+	ldtk         *ldtk.Project
 	currentLevel int
 }
 
@@ -66,12 +66,12 @@ func (g *Game) setupLevel() {
 	}
 }
 
-func loadLtdk(file string) *ldtk.Ltdk {
+func loadLtdk(file string) *ldtk.Project {
 	content, err := os.ReadFile(file)
 	if err != nil {
 		panic(err)
 	}
-	res := ldtk.Ltdk{}
+	res := ldtk.Project{}
 	err = json.Unmarshal(content, &res)
 	if err != nil {
 		panic(err)
