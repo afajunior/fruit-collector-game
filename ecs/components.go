@@ -22,7 +22,7 @@ type Velocity struct {
 type Collectable struct {
 	Points  int
 	Enabled bool
-	Type string
+	Type    string
 }
 
 type Obstacle struct {

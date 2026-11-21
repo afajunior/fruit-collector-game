@@ -3,6 +3,7 @@ package ldtk
 import (
 	"encoding/json"
 	"errors"
+	"fmt"
 	"image/color"
 
 	"github.com/afajunior/fruit-collector-game/ecs"
@@ -90,7 +91,8 @@ func (l *Layer) SpawnEntities(w *ecs.World) error {
 				return err
 			}
 			if points < 1 {
-				return errors.New("Invalid fruit point")
+				err = fmt.Errorf("invalid fruit point: %d", points)
+				return err
 			}
 
 			fruitType, err := GetField[string](&ent, "Type")
@@ -113,10 +115,11 @@ func GetField[T any](e *Entity, name string) (T, error) {
 			var v T
 			err := json.Unmarshal(f.Value, &v)
 			if err != nil {
-				return zero, err
+				return zero, nil
 			}
 			return v, err
 		}
 	}
-	return zero, errors.New("Field not found")
+	err := fmt.Errorf("field %s not found", name)
+	return zero, err
 }

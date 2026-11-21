@@ -18,8 +18,10 @@ func (s *CollisionSystem) Update(w *ecs.World) error {
 			if dx == pCol.X && dy == pCol.Y {
 				player, _ := w.Players.Get(p)
 				fruit, _ := w.Collectables.Get(c)
-				player.Points += fruit.Points
-				fruit.Enabled = false
+				if fruit.Enabled {
+					player.Points += fruit.Points
+					fruit.Enabled = false
+				}
 			}
 		}
 	}
