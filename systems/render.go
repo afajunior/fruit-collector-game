@@ -49,17 +49,3 @@ func (s *RenderSystem) Draw(w *ecs.World, screen *ebiten.Image) {
 		}
 	}
 }
-
-func (s *RenderSystem) DrawGrid(screen *ebiten.Image, cols, rows int) {
-	cell := float32(s.CellSize)
-	width, height := float32(cols)*cell, float32(rows)*cell
-	for c := 0; c <= cols; c++ {
-		x := float32(c) * cell
-		vector.StrokeLine(screen, x, 0, x, height, 1, s.GridColor, false)
-	}
-
-	for r := 0; r <= rows; r++ {
-		y := float32(r) * cell
-		vector.StrokeLine(screen, 0, y, width, y, 1, s.GridColor, false)
-	}
-}

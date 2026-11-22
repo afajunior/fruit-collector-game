@@ -552,6 +552,28 @@
 							],
 							"__worldX": 32,
 							"__worldY": 144
+						},
+						{
+							"__identifier": "Fruit",
+							"__grid": [10,5],
+							"__pivot": [0,0],
+							"__tags": [],
+							"__tile": null,
+							"__smartColor": "#D77643",
+							"iid": "e9ef8270-e4f0-11f1-adff-a9c46633aab9",
+							"width": 16,
+							"height": 16,
+							"defUid": 4,
+							"px": [160,80],
+							"fieldInstances": [
+								{ "__identifier": "Points", "__type": "Int", "__value": 1, "__tile": null, "defUid": 6, "realEditorValues": [{ "id": "V_Int", "params": [1] }] },
+								{ "__identifier": "Type", "__type": "LocalEnum.Fruits", "__value": "Strawberry", "__tile": null, "defUid": 9, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["Strawberry"]
+								}] }
+							],
+							"__worldX": 160,
+							"__worldY": 80
 						}
 					]
 				},

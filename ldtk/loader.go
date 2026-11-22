@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"image"
 	"image/color"
 	"strings"
 
@@ -47,10 +46,10 @@ type Project struct {
 
 func (e *Entity) GetPosition(gridSize int) ([2]int, error) {
 	if len(e.Px) != 2 {
-		return [2]int{}, errors.New("Invalid px size")
+		return [2]int{}, errors.New("invalid px size")
 	}
 	if gridSize <= 0 {
-		return [2]int{}, errors.New("Invalid grid size")
+		return [2]int{}, errors.New("invalid grid size")
 	}
 	return [2]int{e.Px[0] / gridSize, e.Px[1] / gridSize}, nil
 }
@@ -90,9 +89,7 @@ func (l *Layer) SpawnEntities(w *ecs.World, sprites map[string]*ebiten.Image) er
 			if img == nil {
 				w.Sprites.Add(e, ecs.Sprite{Color: color.RGBA{0x3B, 0x82, 0xF6, 0xFF}})
 			} else {
-				rect := image.Rect(0, 0, 16, 16)
-				subImg := img.SubImage(rect).(*ebiten.Image)
-				w.Sprites.Add(e, ecs.Sprite{Image: subImg})
+				w.Sprites.Add(e, ecs.Sprite{Image: img})
 			}
 		case "Fruit":
 			points, err := GetField[int](&ent, "Points")
@@ -124,6 +121,15 @@ func (l *Layer) SpawnEntities(w *ecs.World, sprites map[string]*ebiten.Image) er
 	return nil
 }
 
+func (l *Level) GetLayer(identifier string) (*Layer, error) {
+	for _, layer := range l.Layers {
+		if layer.Identifier == identifier {
+			return &layer, nil
+		}
+	}
+	return nil, fmt.Errorf("layer %s not found", identifier)
+}
+
 func GetField[T any](e *Entity, name string) (T, error) {
 	var zero T
 	for _, f := range e.Fields {
@@ -131,9 +137,9 @@ func GetField[T any](e *Entity, name string) (T, error) {
 			var v T
 			err := json.Unmarshal(f.Value, &v)
 			if err != nil {
-				return zero, nil
+				return zero, err
 			}
-			return v, err
+			return v, nil
 		}
 	}
 	err := fmt.Errorf("field %s not found", name)
