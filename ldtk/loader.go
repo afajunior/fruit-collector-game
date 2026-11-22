@@ -4,9 +4,12 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"image"
 	"image/color"
+	"strings"
 
 	"github.com/afajunior/fruit-collector-game/ecs"
+	"github.com/hajimehoshi/ebiten/v2"
 )
 
 type Entity struct {
@@ -67,7 +70,7 @@ func (l *Layer) SpawnCollisions(w *ecs.World) {
 	}
 }
 
-func (l *Layer) SpawnEntities(w *ecs.World) error {
+func (l *Layer) SpawnEntities(w *ecs.World, sprites map[string]*ebiten.Image) error {
 	if l.Identifier != "Entities" {
 		return nil
 	}
@@ -83,7 +86,14 @@ func (l *Layer) SpawnEntities(w *ecs.World) error {
 		case "Player":
 			w.Players.Add(e, ecs.Player{})
 			w.Velocities.Add(e, ecs.Velocity{})
-			w.Sprites.Add(e, ecs.Sprite{Color: color.RGBA{0x3B, 0x82, 0xF6, 0xFF}})
+			img := sprites["farmer_idle"]
+			if img == nil {
+				w.Sprites.Add(e, ecs.Sprite{Color: color.RGBA{0x3B, 0x82, 0xF6, 0xFF}})
+			} else {
+				rect := image.Rect(0, 0, 16, 16)
+				subImg := img.SubImage(rect).(*ebiten.Image)
+				w.Sprites.Add(e, ecs.Sprite{Image: subImg})
+			}
 		case "Fruit":
 			points, err := GetField[int](&ent, "Points")
 
@@ -99,9 +109,15 @@ func (l *Layer) SpawnEntities(w *ecs.World) error {
 			if err != nil {
 				return err
 			}
+			fruitType = strings.ToLower(fruitType)
 
 			w.Collectables.Add(e, ecs.Collectable{Points: points, Type: fruitType, Enabled: true})
-			w.Sprites.Add(e, ecs.Sprite{Color: color.RGBA{0xEF, 0x44, 0x44, 0xFF}})
+			img := sprites[fruitType]
+			if img == nil {
+				w.Sprites.Add(e, ecs.Sprite{Color: color.RGBA{0xEF, 0x44, 0x44, 0xFF}})
+			} else {
+				w.Sprites.Add(e, ecs.Sprite{Image: img})
+			}
 		}
 		w.Positions.Add(e, ecs.Position{X: position[0], Y: position[1]})
 	}

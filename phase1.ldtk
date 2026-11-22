@@ -11,7 +11,7 @@
 	"iid": "290443e0-bde0-11f1-81f1-bf9bec76fe7b",
 	"jsonVersion": "1.5.3",
 	"appBuildId": 473703,
-	"nextUid": 8,
+	"nextUid": 10,
 	"identifierStyle": "Capitalize",
 	"toc": [],
 	"worldLayout": "Free",
@@ -21,7 +21,7 @@
 	"defaultLevelHeight": 256,
 	"defaultPivotX": 0,
 	"defaultPivotY": 0,
-	"defaultGridSize": 32,
+	"defaultGridSize": 16,
 	"defaultEntityWidth": 16,
 	"defaultEntityHeight": 16,
 	"bgColor": "#40465B",
@@ -48,7 +48,7 @@
 			"uid": 2,
 			"doc": null,
 			"uiColor": null,
-			"gridSize": 32,
+			"gridSize": 16,
 			"guideGridWid": 0,
 			"guideGridHei": 0,
 			"displayOpacity": 1,
@@ -83,7 +83,7 @@
 			"uid": 1,
 			"doc": null,
 			"uiColor": null,
-			"gridSize": 32,
+			"gridSize": 16,
 			"guideGridWid": 0,
 			"guideGridHei": 0,
 			"displayOpacity": 1,
@@ -119,8 +119,8 @@
 			"exportToToc": false,
 			"allowOutOfBounds": false,
 			"doc": null,
-			"width": 32,
-			"height": 32,
+			"width": 16,
+			"height": 16,
 			"resizableX": false,
 			"resizableY": false,
 			"minWidth": null,
@@ -154,8 +154,8 @@
 			"exportToToc": false,
 			"allowOutOfBounds": false,
 			"doc": null,
-			"width": 32,
-			"height": 32,
+			"width": 16,
+			"height": 16,
 			"resizableX": false,
 			"resizableY": false,
 			"minWidth": null,
@@ -181,43 +181,6 @@
 			"pivotX": 0,
 			"pivotY": 0,
 			"fieldDefs": [
-				{
-					"identifier": "Type",
-					"doc": null,
-					"__type": "String",
-					"uid": 5,
-					"type": "F_String",
-					"isArray": false,
-					"canBeNull": true,
-					"arrayMinLength": null,
-					"arrayMaxLength": null,
-					"editorDisplayMode": "Hidden",
-					"editorDisplayScale": 1,
-					"editorDisplayPos": "Above",
-					"editorLinkStyle": "StraightArrow",
-					"editorDisplayColor": null,
-					"editorAlwaysShow": false,
-					"editorShowInWorld": true,
-					"editorCutLongValues": true,
-					"editorTextSuffix": null,
-					"editorTextPrefix": null,
-					"useForSmartColor": false,
-					"exportToToc": false,
-					"searchable": false,
-					"min": null,
-					"max": null,
-					"regex": null,
-					"acceptFileTypes": null,
-					"defaultOverride": null,
-					"textLanguageMode": null,
-					"symmetricalRef": false,
-					"autoChainRef": true,
-					"allowOutOfLevelRef": true,
-					"allowedRefs": "OnlySame",
-					"allowedRefsEntityUid": null,
-					"allowedRefTags": [],
-					"tilesetUid": null
-				},
 				{
 					"identifier": "Points",
 					"doc": null,
@@ -254,10 +217,60 @@
 					"allowedRefsEntityUid": null,
 					"allowedRefTags": [],
 					"tilesetUid": null
+				},
+				{
+					"identifier": "Type",
+					"doc": null,
+					"__type": "LocalEnum.Fruits",
+					"uid": 9,
+					"type": "F_Enum(8)",
+					"isArray": false,
+					"canBeNull": false,
+					"arrayMinLength": null,
+					"arrayMaxLength": null,
+					"editorDisplayMode": "Hidden",
+					"editorDisplayScale": 1,
+					"editorDisplayPos": "Above",
+					"editorLinkStyle": "StraightArrow",
+					"editorDisplayColor": null,
+					"editorAlwaysShow": false,
+					"editorShowInWorld": true,
+					"editorCutLongValues": true,
+					"editorTextSuffix": null,
+					"editorTextPrefix": null,
+					"useForSmartColor": false,
+					"exportToToc": false,
+					"searchable": false,
+					"min": null,
+					"max": null,
+					"regex": null,
+					"acceptFileTypes": null,
+					"defaultOverride": null,
+					"textLanguageMode": null,
+					"symmetricalRef": false,
+					"autoChainRef": true,
+					"allowOutOfLevelRef": true,
+					"allowedRefs": "OnlySame",
+					"allowedRefsEntityUid": null,
+					"allowedRefTags": [],
+					"tilesetUid": null
 				}
 			]
 		}
-	], "tilesets": [], "enums": [], "externalEnums": [], "levelFields": [] },
+	], "tilesets": [], "enums": [{ "identifier": "Fruits", "uid": 8, "values": [
+		{ "id": "Apple", "tileRect": null, "color": 12470831 },
+		{ "id": "Banana", "tileRect": null, "color": 14120515 },
+		{ "id": "Blueberry", "tileRect": null, "color": 15389866 },
+		{ "id": "Cherry", "tileRect": null, "color": 14984818 },
+		{ "id": "Coconut", "tileRect": null, "color": 7552569 },
+		{ "id": "Kiwi", "tileRect": null, "color": 4073265 },
+		{ "id": "Lemon", "tileRect": null, "color": 16690740 },
+		{ "id": "Orange", "tileRect": null, "color": 16705377 },
+		{ "id": "Peach", "tileRect": null, "color": 6539085 },
+		{ "id": "Pear", "tileRect": null, "color": 4098376 },
+		{ "id": "Pomegranate", "tileRect": null, "color": 1199753 },
+		{ "id": "Strawberry", "tileRect": null, "color": 39387 }
+	], "iconTilesetUid": null, "externalRelPath": null, "externalFileChecksum": null, "tags": [] }], "externalEnums": [], "levelFields": [] },
 	"levels": [
 		{
 			"identifier": "Level_0",
@@ -266,8 +279,8 @@
 			"worldX": 0,
 			"worldY": 0,
 			"worldDepth": 0,
-			"pxWid": 448,
-			"pxHei": 384,
+			"pxWid": 224,
+			"pxHei": 192,
 			"__bgColor": "#696A79",
 			"bgColor": null,
 			"useAutoIdentifier": true,
@@ -285,7 +298,7 @@
 					"__type": "Entities",
 					"__cWid": 14,
 					"__cHei": 12,
-					"__gridSize": 32,
+					"__gridSize": 16,
 					"__opacity": 1,
 					"__pxTotalOffsetX": 0,
 					"__pxTotalOffsetY": 0,
@@ -306,14 +319,14 @@
 					"entityInstances": [
 						{
 							"__identifier": "Player",
-							"__grid": [2,1],
+							"__grid": [4,2],
 							"__pivot": [0,0],
 							"__tags": [],
 							"__tile": null,
 							"__smartColor": "#BE4A2F",
 							"iid": "9178e060-bde0-11f1-81f1-27ad3b345b01",
-							"width": 32,
-							"height": 32,
+							"width": 16,
+							"height": 16,
 							"defUid": 3,
 							"px": [64,32],
 							"fieldInstances": [],
@@ -322,24 +335,24 @@
 						},
 						{
 							"__identifier": "Fruit",
-							"__grid": [5,1],
+							"__grid": [7,2],
 							"__pivot": [0,0],
 							"__tags": [],
 							"__tile": null,
 							"__smartColor": "#D77643",
 							"iid": "98ceeda0-bde0-11f1-81f1-79f9c0a41580",
-							"width": 32,
-							"height": 32,
+							"width": 16,
+							"height": 16,
 							"defUid": 4,
-							"px": [160,32],
+							"px": [112,32],
 							"fieldInstances": [
-								{ "__identifier": "Type", "__type": "String", "__value": "apple", "__tile": null, "defUid": 5, "realEditorValues": [{
+								{ "__identifier": "Points", "__type": "Int", "__value": 2, "__tile": null, "defUid": 6, "realEditorValues": [{ "id": "V_Int", "params": [2] }] },
+								{ "__identifier": "Type", "__type": "LocalEnum.Fruits", "__value": "Apple", "__tile": null, "defUid": 9, "realEditorValues": [{
 									"id": "V_String",
-									"params": ["apple"]
-								}] },
-								{ "__identifier": "Points", "__type": "Int", "__value": 2, "__tile": null, "defUid": 6, "realEditorValues": [{ "id": "V_Int", "params": [2] }] }
+									"params": ["Apple"]
+								}] }
 							],
-							"__worldX": 160,
+							"__worldX": 112,
 							"__worldY": 32
 						},
 						{
@@ -350,85 +363,85 @@
 							"__tile": null,
 							"__smartColor": "#D77643",
 							"iid": "9a02b2b0-bde0-11f1-81f1-4dcc61dc1dd4",
-							"width": 32,
-							"height": 32,
+							"width": 16,
+							"height": 16,
 							"defUid": 4,
-							"px": [160,128],
+							"px": [80,64],
 							"fieldInstances": [
-								{ "__identifier": "Type", "__type": "String", "__value": "orange", "__tile": null, "defUid": 5, "realEditorValues": [{
+								{ "__identifier": "Points", "__type": "Int", "__value": 5, "__tile": null, "defUid": 6, "realEditorValues": [{ "id": "V_Int", "params": [5] }] },
+								{ "__identifier": "Type", "__type": "LocalEnum.Fruits", "__value": "Banana", "__tile": null, "defUid": 9, "realEditorValues": [{
 									"id": "V_String",
-									"params": ["orange"]
-								}] },
-								{ "__identifier": "Points", "__type": "Int", "__value": 5, "__tile": null, "defUid": 6, "realEditorValues": [{ "id": "V_Int", "params": [5] }] }
+									"params": ["Banana"]
+								}] }
 							],
-							"__worldX": 160,
-							"__worldY": 128
+							"__worldX": 80,
+							"__worldY": 64
 						},
 						{
 							"__identifier": "Fruit",
-							"__grid": [2,5],
+							"__grid": [2,6],
 							"__pivot": [0,0],
 							"__tags": [],
 							"__tile": null,
 							"__smartColor": "#D77643",
 							"iid": "9ac90ff0-bde0-11f1-81f1-a5ef165fcc5c",
-							"width": 32,
-							"height": 32,
+							"width": 16,
+							"height": 16,
 							"defUid": 4,
-							"px": [64,160],
+							"px": [32,96],
 							"fieldInstances": [
-								{ "__identifier": "Type", "__type": "String", "__value": "pineapple", "__tile": null, "defUid": 5, "realEditorValues": [{
+								{ "__identifier": "Points", "__type": "Int", "__value": 10, "__tile": null, "defUid": 6, "realEditorValues": [{ "id": "V_Int", "params": [10] }] },
+								{ "__identifier": "Type", "__type": "LocalEnum.Fruits", "__value": "Blueberry", "__tile": null, "defUid": 9, "realEditorValues": [{
 									"id": "V_String",
-									"params": ["pineapple"]
-								}] },
-								{ "__identifier": "Points", "__type": "Int", "__value": 10, "__tile": null, "defUid": 6, "realEditorValues": [{ "id": "V_Int", "params": [10] }] }
+									"params": ["Blueberry"]
+								}] }
 							],
-							"__worldX": 64,
-							"__worldY": 160
+							"__worldX": 32,
+							"__worldY": 96
 						},
 						{
 							"__identifier": "Fruit",
-							"__grid": [7,6],
+							"__grid": [7,4],
 							"__pivot": [0,0],
 							"__tags": [],
 							"__tile": null,
 							"__smartColor": "#D77643",
 							"iid": "8e1e2580-bde0-11f1-89ab-41f8a249b458",
-							"width": 32,
-							"height": 32,
+							"width": 16,
+							"height": 16,
 							"defUid": 4,
-							"px": [224,192],
+							"px": [112,64],
 							"fieldInstances": [
-								{ "__identifier": "Type", "__type": "String", "__value": "avocato", "__tile": null, "defUid": 5, "realEditorValues": [{
+								{ "__identifier": "Points", "__type": "Int", "__value": 1, "__tile": null, "defUid": 6, "realEditorValues": [{ "id": "V_Int", "params": [1] }] },
+								{ "__identifier": "Type", "__type": "LocalEnum.Fruits", "__value": "Cherry", "__tile": null, "defUid": 9, "realEditorValues": [{
 									"id": "V_String",
-									"params": ["avocato"]
-								}] },
-								{ "__identifier": "Points", "__type": "Int", "__value": 1, "__tile": null, "defUid": 6, "realEditorValues": [{ "id": "V_Int", "params": [1] }] }
+									"params": ["Cherry"]
+								}] }
 							],
-							"__worldX": 224,
-							"__worldY": 192
+							"__worldX": 112,
+							"__worldY": 64
 						},
 						{
 							"__identifier": "Fruit",
-							"__grid": [7,8],
+							"__grid": [7,7],
 							"__pivot": [0,0],
 							"__tags": [],
 							"__tile": null,
 							"__smartColor": "#D77643",
 							"iid": "8f7fb150-bde0-11f1-89ab-3fad66c4ed05",
-							"width": 32,
-							"height": 32,
+							"width": 16,
+							"height": 16,
 							"defUid": 4,
-							"px": [224,256],
+							"px": [112,112],
 							"fieldInstances": [
-								{ "__identifier": "Type", "__type": "String", "__value": "bacuri", "__tile": null, "defUid": 5, "realEditorValues": [{
+								{ "__identifier": "Points", "__type": "Int", "__value": 3, "__tile": null, "defUid": 6, "realEditorValues": [{ "id": "V_Int", "params": [3] }] },
+								{ "__identifier": "Type", "__type": "LocalEnum.Fruits", "__value": "Coconut", "__tile": null, "defUid": 9, "realEditorValues": [{
 									"id": "V_String",
-									"params": ["bacuri"]
-								}] },
-								{ "__identifier": "Points", "__type": "Int", "__value": 3, "__tile": null, "defUid": 6, "realEditorValues": [{ "id": "V_Int", "params": [3] }] }
+									"params": ["Coconut"]
+								}] }
 							],
-							"__worldX": 224,
-							"__worldY": 256
+							"__worldX": 112,
+							"__worldY": 112
 						},
 						{
 							"__identifier": "Fruit",
@@ -438,19 +451,19 @@
 							"__tile": null,
 							"__smartColor": "#D77643",
 							"iid": "900e35b0-bde0-11f1-89ab-f9953bbad492",
-							"width": 32,
-							"height": 32,
+							"width": 16,
+							"height": 16,
 							"defUid": 4,
-							"px": [352,288],
+							"px": [176,144],
 							"fieldInstances": [
-								{ "__identifier": "Type", "__type": "String", "__value": "oragen", "__tile": null, "defUid": 5, "realEditorValues": [{
+								{ "__identifier": "Points", "__type": "Int", "__value": 1, "__tile": null, "defUid": 6, "realEditorValues": [{ "id": "V_Int", "params": [1] }] },
+								{ "__identifier": "Type", "__type": "LocalEnum.Fruits", "__value": "Kiwi", "__tile": null, "defUid": 9, "realEditorValues": [{
 									"id": "V_String",
-									"params": ["oragen"]
-								}] },
-								{ "__identifier": "Points", "__type": "Int", "__value": 1, "__tile": null, "defUid": 6, "realEditorValues": [{ "id": "V_Int", "params": [1] }] }
+									"params": ["Kiwi"]
+								}] }
 							],
-							"__worldX": 352,
-							"__worldY": 288
+							"__worldX": 176,
+							"__worldY": 144
 						},
 						{
 							"__identifier": "Fruit",
@@ -460,85 +473,85 @@
 							"__tile": null,
 							"__smartColor": "#D77643",
 							"iid": "90b60e70-bde0-11f1-89ab-5ddfdf03c777",
-							"width": 32,
-							"height": 32,
+							"width": 16,
+							"height": 16,
 							"defUid": 4,
-							"px": [352,64],
+							"px": [176,32],
 							"fieldInstances": [
-								{ "__identifier": "Type", "__type": "String", "__value": "orange", "__tile": null, "defUid": 5, "realEditorValues": [{
+								{ "__identifier": "Points", "__type": "Int", "__value": 1, "__tile": null, "defUid": 6, "realEditorValues": [{ "id": "V_Int", "params": [1] }] },
+								{ "__identifier": "Type", "__type": "LocalEnum.Fruits", "__value": "Lemon", "__tile": null, "defUid": 9, "realEditorValues": [{
 									"id": "V_String",
-									"params": ["orange"]
-								}] },
-								{ "__identifier": "Points", "__type": "Int", "__value": 1, "__tile": null, "defUid": 6, "realEditorValues": [{ "id": "V_Int", "params": [1] }] }
+									"params": ["Lemon"]
+								}] }
 							],
-							"__worldX": 352,
-							"__worldY": 64
+							"__worldX": 176,
+							"__worldY": 32
 						},
 						{
 							"__identifier": "Fruit",
-							"__grid": [8,1],
+							"__grid": [9,2],
 							"__pivot": [0,0],
 							"__tags": [],
 							"__tile": null,
 							"__smartColor": "#D77643",
 							"iid": "91e4a360-bde0-11f1-89ab-f1ebaa29f710",
-							"width": 32,
-							"height": 32,
+							"width": 16,
+							"height": 16,
 							"defUid": 4,
-							"px": [256,32],
+							"px": [144,32],
 							"fieldInstances": [
-								{ "__identifier": "Type", "__type": "String", "__value": "apple", "__tile": null, "defUid": 5, "realEditorValues": [{
+								{ "__identifier": "Points", "__type": "Int", "__value": 2, "__tile": null, "defUid": 6, "realEditorValues": [{ "id": "V_Int", "params": [2] }] },
+								{ "__identifier": "Type", "__type": "LocalEnum.Fruits", "__value": "Orange", "__tile": null, "defUid": 9, "realEditorValues": [{
 									"id": "V_String",
-									"params": ["apple"]
-								}] },
-								{ "__identifier": "Points", "__type": "Int", "__value": 2, "__tile": null, "defUid": 6, "realEditorValues": [{ "id": "V_Int", "params": [2] }] }
+									"params": ["Orange"]
+								}] }
 							],
-							"__worldX": 256,
+							"__worldX": 144,
 							"__worldY": 32
 						},
 						{
 							"__identifier": "Fruit",
-							"__grid": [4,10],
+							"__grid": [6,9],
 							"__pivot": [0,0],
 							"__tags": [],
 							"__tile": null,
 							"__smartColor": "#D77643",
 							"iid": "926b5f90-bde0-11f1-89ab-5b8227825dde",
-							"width": 32,
-							"height": 32,
+							"width": 16,
+							"height": 16,
 							"defUid": 4,
-							"px": [128,320],
+							"px": [96,144],
 							"fieldInstances": [
-								{ "__identifier": "Type", "__type": "String", "__value": "banana", "__tile": null, "defUid": 5, "realEditorValues": [{
+								{ "__identifier": "Points", "__type": "Int", "__value": 1, "__tile": null, "defUid": 6, "realEditorValues": [{ "id": "V_Int", "params": [1] }] },
+								{ "__identifier": "Type", "__type": "LocalEnum.Fruits", "__value": "Peach", "__tile": null, "defUid": 9, "realEditorValues": [{
 									"id": "V_String",
-									"params": ["banana"]
-								}] },
-								{ "__identifier": "Points", "__type": "Int", "__value": 1, "__tile": null, "defUid": 6, "realEditorValues": [{ "id": "V_Int", "params": [1] }] }
+									"params": ["Peach"]
+								}] }
 							],
-							"__worldX": 128,
-							"__worldY": 320
+							"__worldX": 96,
+							"__worldY": 144
 						},
 						{
 							"__identifier": "Fruit",
-							"__grid": [1,9],
+							"__grid": [2,9],
 							"__pivot": [0,0],
 							"__tags": [],
 							"__tile": null,
 							"__smartColor": "#D77643",
 							"iid": "92fec5f0-bde0-11f1-89ab-a3aee0258682",
-							"width": 32,
-							"height": 32,
+							"width": 16,
+							"height": 16,
 							"defUid": 4,
-							"px": [32,288],
+							"px": [32,144],
 							"fieldInstances": [
-								{ "__identifier": "Type", "__type": "String", "__value": "banana", "__tile": null, "defUid": 5, "realEditorValues": [{
+								{ "__identifier": "Points", "__type": "Int", "__value": 1, "__tile": null, "defUid": 6, "realEditorValues": [{ "id": "V_Int", "params": [1] }] },
+								{ "__identifier": "Type", "__type": "LocalEnum.Fruits", "__value": "Pear", "__tile": null, "defUid": 9, "realEditorValues": [{
 									"id": "V_String",
-									"params": ["banana"]
-								}] },
-								{ "__identifier": "Points", "__type": "Int", "__value": 1, "__tile": null, "defUid": 6, "realEditorValues": [{ "id": "V_Int", "params": [1] }] }
+									"params": ["Pear"]
+								}] }
 							],
 							"__worldX": 32,
-							"__worldY": 288
+							"__worldY": 144
 						}
 					]
 				},
@@ -547,7 +560,7 @@
 					"__type": "IntGrid",
 					"__cWid": 14,
 					"__cHei": 12,
-					"__gridSize": 32,
+					"__gridSize": 16,
 					"__opacity": 1,
 					"__pxTotalOffsetX": 0,
 					"__pxTotalOffsetY": 0,
@@ -561,10 +574,10 @@
 					"visible": true,
 					"optionalRules": [],
 					"intGridCsv": [
-						1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,
-						0,0,0,0,0,0,1,1,0,1,0,1,1,1,0,0,0,0,0,0,1,1,0,0,1,1,0,1,0,0,0,0,0,0,1,
-						1,0,0,0,1,0,0,0,0,0,0,0,0,1,1,0,0,0,0,1,0,0,0,0,0,0,0,1,1,0,0,0,0,0,1,
-						0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,1,0,0,0,0,1,
+						1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,
+						0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,
+						1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,
+						0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,
 						1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
 					],
 					"autoLayerTiles": [],

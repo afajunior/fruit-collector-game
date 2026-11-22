@@ -2,15 +2,16 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"image/color"
 	"log"
 	"os"
+	"strings"
 
 	"github.com/afajunior/fruit-collector-game/ecs"
 	"github.com/afajunior/fruit-collector-game/ldtk"
 	"github.com/afajunior/fruit-collector-game/systems"
 	"github.com/hajimehoshi/ebiten/v2"
+	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
 )
 
 const (
@@ -57,11 +58,16 @@ func NewGame() *Game {
 func (g *Game) setupLevel() {
 	w := g.world
 	currentLevel := g.ldtk.Levels[g.currentLevel]
+	fruitImages, err := loadFruits()
+	if err != nil {
+		log.Fatal(err)
+		fruitImages = make(map[string]*ebiten.Image)
+	}
 	for _, layer := range currentLevel.Layers {
 		layer.SpawnCollisions(w)
-		error := layer.SpawnEntities(w)
-		if error != nil {
-			panic(error)
+		err := layer.SpawnEntities(w, fruitImages)
+		if err != nil {
+			panic(err)
 		}
 	}
 }
@@ -76,8 +82,6 @@ func loadLtdk(file string) *ldtk.Project {
 	if err != nil {
 		panic(err)
 	}
-
-	fmt.Println(res)
 
 	return &res
 }
@@ -103,6 +107,23 @@ func (g *Game) Update() error {
 		}
 	}
 	return nil
+}
+
+func loadFruits() (map[string]*ebiten.Image, error) {
+	entries, err := os.ReadDir("./assets/sprites")
+	if err != nil {
+		return nil, err
+	}
+	var m = make(map[string]*ebiten.Image)
+	for _, e := range entries {
+		filename := e.Name()
+		img, _, err := ebitenutil.NewImageFromFile("./assets/sprites/" + filename)
+		if err != nil {
+			return nil, err
+		}
+		m[strings.Split(filename, ".")[0]] = img
+	}
+	return m, nil
 }
 
 func main() {

@@ -38,7 +38,15 @@ func (s *RenderSystem) Draw(w *ecs.World, screen *ebiten.Image) {
 		}
 		x := float32(p.X) * cell
 		y := float32(p.Y) * cell
-		vector.DrawFilledRect(screen, x+padding, y+padding, cell-2*padding, cell-2*padding, sp.Color, false)
+		if sp.Image == nil {
+			vector.DrawFilledRect(screen, x+padding, y+padding, cell-2*padding, cell-2*padding, sp.Color, false)
+		} else {
+			opts := &ebiten.DrawImageOptions{}
+			dx := float64(p.X * s.CellSize)
+			dy := float64(p.Y * s.CellSize)
+			opts.GeoM.Translate(dx, dy)
+			screen.DrawImage(sp.Image, opts)
+		}
 	}
 }
 

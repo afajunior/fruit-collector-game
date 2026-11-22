@@ -1,14 +1,18 @@
 package ecs
 
-import "image/color"
+import (
+	"image/color"
+
+	"github.com/hajimehoshi/ebiten/v2"
+)
 
 type Player struct {
 	Points int
 }
 
 type Sprite struct {
-	//TODO: Adicionar ebiten.Image para PNGs
 	Color color.RGBA
+	Image *ebiten.Image
 }
 
 type Position struct {
