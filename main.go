@@ -42,8 +42,7 @@ func NewGame() *Game {
 			&systems.CollisionSystem{},
 		},
 		renderer: systems.RenderSystem{
-			CellSize:  cellSize,
-			GridColor: color.RGBA{0xE0, 0xE0, 0xE0, 0xFF},
+			CellSize: cellSize,
 		},
 		ldtk:         ldtkSchema,
 		currentLevel: 0,
@@ -114,12 +113,14 @@ func loadSprites() (map[string]*ebiten.Image, error) {
 	var m = make(map[string]*ebiten.Image)
 	for _, e := range entries {
 		filename := e.Name()
-		img, _, err := ebitenutil.NewImageFromFile("./assets/sprites/" + filename)
-		if err != nil {
-			return nil, err
+		if strings.HasSuffix(filename, ".png") {
+			img, _, err := ebitenutil.NewImageFromFile("./assets/sprites/" + filename)
+			if err != nil {
+				return nil, err
+			}
+			spriteName := strings.TrimSuffix(filename, ".png")
+			m[spriteName] = img
 		}
-		fruitName := strings.TrimSuffix(filename, ".png")
-		m[fruitName] = img
 	}
 	return m, nil
 }

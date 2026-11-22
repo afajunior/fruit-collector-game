@@ -1,7 +1,6 @@
 package systems
 
 import (
-	"image/color"
 	"sort"
 
 	"github.com/afajunior/fruit-collector-game/ecs"
@@ -10,8 +9,7 @@ import (
 )
 
 type RenderSystem struct {
-	CellSize  int
-	GridColor color.RGBA
+	CellSize int
 }
 
 func (s *RenderSystem) Draw(w *ecs.World, screen *ebiten.Image) {

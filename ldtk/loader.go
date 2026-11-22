@@ -122,9 +122,9 @@ func (l *Layer) SpawnEntities(w *ecs.World, sprites map[string]*ebiten.Image) er
 }
 
 func (l *Level) GetLayer(identifier string) (*Layer, error) {
-	for _, layer := range l.Layers {
+	for i, layer := range l.Layers {
 		if layer.Identifier == identifier {
-			return &layer, nil
+			return &l.Layers[i], nil
 		}
 	}
 	return nil, fmt.Errorf("layer %s not found", identifier)
