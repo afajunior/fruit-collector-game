@@ -2,16 +2,17 @@ package main
 
 import (
 	"encoding/json"
+	"image"
 	"image/color"
 	"log"
 	"os"
-	"strings"
 
+	"github.com/afajunior/fruit-collector-game/assets"
 	"github.com/afajunior/fruit-collector-game/ecs"
 	"github.com/afajunior/fruit-collector-game/ldtk"
+	"github.com/afajunior/fruit-collector-game/level"
 	"github.com/afajunior/fruit-collector-game/systems"
 	"github.com/hajimehoshi/ebiten/v2"
-	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
 )
 
 type Game struct {
@@ -27,7 +28,7 @@ type Game struct {
 func NewGame() *Game {
 	ldtkSchema := loadLdtk("phase1.ldtk")
 	currentLevel := ldtkSchema.Levels[0]
-	collisionsLayer, err := currentLevel.GetLayer("Collisions")
+	collisionsLayer, err := currentLevel.GetLayer(level.COLLISIONS)
 	if err != nil {
 		panic(err)
 	}
@@ -49,7 +50,7 @@ func NewGame() *Game {
 		screenWidth:  numCols * cellSize,
 		screenHeight: numRows * cellSize,
 	}
-	sprites, err := loadSprites()
+	sprites, err := assets.LoadSprites()
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -57,7 +58,7 @@ func NewGame() *Game {
 	return g
 }
 
-func (g *Game) setupLevel(sprites map[string]*ebiten.Image) {
+func (g *Game) setupLevel(sprites map[string]image.Image) {
 	w := g.world
 	currentLevel := g.ldtk.Levels[g.currentLevel]
 	for _, layer := range currentLevel.Layers {
@@ -103,26 +104,6 @@ func (g *Game) Update() error {
 		}
 	}
 	return nil
-}
-
-func loadSprites() (map[string]*ebiten.Image, error) {
-	entries, err := os.ReadDir("./assets/sprites")
-	if err != nil {
-		return nil, err
-	}
-	var m = make(map[string]*ebiten.Image)
-	for _, e := range entries {
-		filename := e.Name()
-		if strings.HasSuffix(filename, ".png") {
-			img, _, err := ebitenutil.NewImageFromFile("./assets/sprites/" + filename)
-			if err != nil {
-				return nil, err
-			}
-			spriteName := strings.TrimSuffix(filename, ".png")
-			m[spriteName] = img
-		}
-	}
-	return m, nil
 }
 
 func main() {

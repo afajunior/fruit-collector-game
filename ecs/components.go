@@ -1,9 +1,8 @@
 package ecs
 
 import (
+	"image"
 	"image/color"
-
-	"github.com/hajimehoshi/ebiten/v2"
 )
 
 type Player struct {
@@ -12,7 +11,7 @@ type Player struct {
 
 type Sprite struct {
 	Color color.RGBA
-	Image *ebiten.Image
+	Image image.Image
 }
 
 type Position struct {

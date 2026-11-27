@@ -43,7 +43,8 @@ func (s *RenderSystem) Draw(w *ecs.World, screen *ebiten.Image) {
 			dx := float64(p.X * s.CellSize)
 			dy := float64(p.Y * s.CellSize)
 			opts.GeoM.Translate(dx, dy)
-			screen.DrawImage(sp.Image, opts)
+			ebitenImage := ebiten.NewImageFromImage(sp.Image)
+			screen.DrawImage(ebitenImage, opts)
 		}
 	}
 }

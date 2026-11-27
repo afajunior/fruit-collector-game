@@ -4,11 +4,12 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"image"
 	"image/color"
 	"strings"
 
 	"github.com/afajunior/fruit-collector-game/ecs"
-	"github.com/hajimehoshi/ebiten/v2"
+	"github.com/afajunior/fruit-collector-game/level"
 )
 
 type Entity struct {
@@ -55,7 +56,7 @@ func (e *Entity) GetPosition(gridSize int) ([2]int, error) {
 }
 
 func (l *Layer) SpawnCollisions(w *ecs.World) {
-	if l.Identifier != "Collisions" {
+	if l.Identifier != level.COLLISIONS {
 		return
 	}
 	for i, v := range l.GridCsv {
@@ -69,8 +70,8 @@ func (l *Layer) SpawnCollisions(w *ecs.World) {
 	}
 }
 
-func (l *Layer) SpawnEntities(w *ecs.World, sprites map[string]*ebiten.Image) error {
-	if l.Identifier != "Entities" {
+func (l *Layer) SpawnEntities(w *ecs.World, sprites map[string]image.Image) error {
+	if l.Identifier != level.ENTITIES {
 		return nil
 	}
 	for _, ent := range l.Entities {
@@ -82,7 +83,7 @@ func (l *Layer) SpawnEntities(w *ecs.World, sprites map[string]*ebiten.Image) er
 		e := w.NewEntity()
 
 		switch ent.Identifier {
-		case "Player":
+		case level.PLAYER:
 			w.Players.Add(e, ecs.Player{})
 			w.Velocities.Add(e, ecs.Velocity{})
 			img := sprites["farmer_idle"]
@@ -91,8 +92,8 @@ func (l *Layer) SpawnEntities(w *ecs.World, sprites map[string]*ebiten.Image) er
 			} else {
 				w.Sprites.Add(e, ecs.Sprite{Image: img})
 			}
-		case "Fruit":
-			points, err := GetField[int](&ent, "Points")
+		case level.FRUIT:
+			points, err := GetField[int](&ent, level.POINTS)
 
 			if err != nil {
 				return err
@@ -102,7 +103,7 @@ func (l *Layer) SpawnEntities(w *ecs.World, sprites map[string]*ebiten.Image) er
 				return err
 			}
 
-			fruitType, err := GetField[string](&ent, "Type")
+			fruitType, err := GetField[string](&ent, level.TYPE)
 			if err != nil {
 				return err
 			}
